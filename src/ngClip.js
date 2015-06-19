@@ -41,16 +41,9 @@
         },
         restrict: 'A',
         link: function (scope, element, attrs) {
-          // Bind a fallback function if flash is unavailable
+          // hide button copy when flash is none
           if (ZeroClipboard.isFlashUnusable()) {
-            element.bind('click', function($event) {
-              // Execute the expression with local variables `$event` and `copy`
-              scope.$apply(scope.clipClickFallback({
-                $event: $event,
-                copy: scope.$eval(scope.clipCopy)
-              }));
-            });
-
+            element.hide();
             return;
           }
 
